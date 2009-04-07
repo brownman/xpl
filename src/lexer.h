@@ -20,6 +20,3 @@ typedef struct xpl_lex_symbol *xpl_lex_symbol;
 xpl_lex_stream xpl_lex_stream_init(FILE* file);
 xpl_lex_symbol xpl_lex_stream_next(xpl_lex_stream stream);
 void           xpl_lex_stream_free(xpl_lex_stream stream);
-
-xpl_lex_symbol xpl_lex_symbol_init();
-void           xpl_lex_symbol_free(xpl_lex_symbol symbol);
