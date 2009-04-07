@@ -17,12 +17,13 @@ int main(int argc, char** argv) {
   }
 
   xpl_lex_stream stream = xpl_lex_stream_init(input);
-  xpl_lex_symbol symbol;
 
+  xpl_lex_symbol symbol;
   while(symbol = xpl_lex_stream_next(stream)) {
-    if(symbol != NULL) {
-      printf("%s %c\n", symbol->kind, symbol->token);
-      free(symbol);
-    }
+    printf("%d\n", symbol->type);
   }
+
+  xpl_lex_stream_free(stream);
+
+  fclose(input);
 }
