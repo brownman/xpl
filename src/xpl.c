@@ -1,4 +1,5 @@
 #include "lexer.h"
+#include "expr.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,12 +18,7 @@ int main(int argc, char** argv) {
   }
 
   xpl_lex_stream stream = xpl_lex_stream_init(input);
-
-  xpl_lex_symbol symbol;
-  while(symbol = xpl_lex_stream_next(stream)) {
-    printf("%d\n", symbol->type);
-  }
-
+  xpl_parse(stream);
   xpl_lex_stream_free(stream);
 
   fclose(input);

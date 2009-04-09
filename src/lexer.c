@@ -18,7 +18,7 @@ xpl_lex_symbol xpl_lex_stream_next(xpl_lex_stream stream) {
 
   char ch = getc(stream->input);
   while(ch == '\r' || ch == '\n' || ch == ' ') ch = getc(stream->input);
-  if(ch == EOF) { return NULL; }
+  if(ch == EOF) return NULL;
 
   xpl_lex_symbol symbol = xpl_lex_symbol_init();
 
