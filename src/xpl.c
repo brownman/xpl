@@ -10,7 +10,8 @@ int main(int argc, char** argv) {
     return 0;
   }
 
-  FILE* input = fopen(argv[1], "r");
+  FILE* input  = fopen(argv[1], "r");
+  FILE* output = fopen(argv[2], "w");
 
   if(input == NULL) {
     printf("error: could not open the supplied source file\n");
@@ -18,8 +19,14 @@ int main(int argc, char** argv) {
   }
 
   xpl_lex_stream stream = xpl_lex_stream_init(input);
-  xpl_parse(stream);
-  xpl_lex_stream_free(stream);
 
+  xpl_emit_init(output);
+  xpl_emit_prologue(output);
+  int result_addr = xpl_parse(stream);
+  xpl_emit_display_result(result_addr);
+  xpl_emit_epilogue(output);
+
+  xpl_lex_stream_free(stream);
   fclose(input);
+  fclose(output);
 }
