@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -g
+CC = gcc -Wall -pedantic
+CFLAGS = -g -std=c99
 CFILES = $(wildcard src/*.c)
 OFILES = $(subst src,bin, $(subst .c,.o,$(CFILES)))
 

@@ -1,5 +1,7 @@
+#include "addr.h"
 #include "lexer.h"
 #include "expr.h"
+#include "emit.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,8 +24,8 @@ int main(int argc, char** argv) {
 
   xpl_emit_init(output);
   xpl_emit_prologue(output);
-  int result_addr = xpl_parse(stream);
-  xpl_emit_display_result(result_addr);
+  addr result = xpl_parse(stream);
+  xpl_emit_display_result(result);
   xpl_emit_epilogue(output);
 
   xpl_lex_stream_free(stream);
